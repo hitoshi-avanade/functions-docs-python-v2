@@ -1,11 +1,13 @@
 import azure.functions as func
 import logging
-from func_module import exponential_backoff, get_blob_list, extract_text_from_pdf, get_embedding
+
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
 @app.route(route="HttpExample")
 def HttpExample(req: func.HttpRequest) -> func.HttpResponse:
+    from func_module import exponential_backoff, get_blob_list, extract_text_from_pdf, get_embedding
+    
     logging.info('Python HTTP trigger function processed a request.')
 
     name = req.params.get('name')
